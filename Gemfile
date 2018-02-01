@@ -63,7 +63,10 @@ gem 'devise'
 gem 'doorkeeper'
 # responders for thin controllers
 gem 'responders'
+# API
 gem 'active_model_serializers'
+gem 'oj'
+gem 'oj_mimic_json'
 
 group :test do
   gem 'shoulda-matchers'
