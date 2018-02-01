@@ -41,7 +41,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'database_cleaner'
@@ -62,3 +61,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #authorization
 gem 'devise'
 gem 'doorkeeper'
+# responders for thin controllers
+gem 'responders'
+gem 'active_model_serializers'
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'json_spec'
+end
