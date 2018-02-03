@@ -1,9 +1,9 @@
-require_relative './acceptance_helper'
+require_relative '../acceptance_helper'
 
-feature 'To see Top-5 info', %q{
-  In order to see Top-5 info
+feature 'To see Top-5 info for all time', %q{
+  In order to see Top-5 in fofor all time
   As a guest
-  I want to be able to see info
+  I want to be able to see info for all time
 } do
 
   given(:users) { create_list(:user, 5) }
