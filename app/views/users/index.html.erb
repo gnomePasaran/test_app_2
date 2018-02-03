@@ -1,4 +1,13 @@
 <div class="container-fluid">
+  <div class="panel-heading">
+
+    <div class="col-md-12 text-center">
+      <%= link_to t('.current_day'), day_info_path, class: 'refresh-link btn btn-primary' %>
+      <%= link_to t('.week'), week_info_path, class: 'refresh-link btn btn-default' %>
+      <%= link_to t('.all_time'), root_path, class: 'refresh-link btn btn-success' %>
+    </div>
+  </div>
+
   <div class="col-md-6">
     <div class="panel-heading">
       <%= t('.top_users') %>
@@ -50,7 +59,7 @@
               <tr>
                 <td><%= element[1].email %></td>
                 <td><%= element[0].text %></td>
-                <td><%= element[2] %></td>
+                <td>Likes: <%= element[2] %></td>
               </tr>
             <% end %>
           </tbody>
