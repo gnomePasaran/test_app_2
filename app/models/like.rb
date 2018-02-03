@@ -4,7 +4,11 @@ class Like < ApplicationRecord
 
   validates :post_id, uniqueness: { scope: :user_id }
 
-  scope :most_liked, -> do
-    select('post_id, count(post_id)').group('post_id').order('count(post_id) desc').pluck('post_id, count(post_id)').first(5)
+  def self.most_liked(from = nil, to = nil)
+    find_by_sql("
+      select post_id, count(post_id) from likes
+      #{"where created_at between '" + from.to_s + "' and '" + (to.to_date + 1.day).to_s + "'" if from.present? && to.present? }
+      group by post_id order by count(post_id) desc limit 5
+    ")
   end
 end
