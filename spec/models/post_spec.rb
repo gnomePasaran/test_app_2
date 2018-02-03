@@ -11,7 +11,7 @@ RSpec.describe Post, type: :model do
     let!(:users) { create_list(:user, 5) }
     let!(:user) { create(:user) }
     before { users.map.with_index { |u, i| create_list(:post, i + 2, user: u) } }
-    let(:result) { users.map { |u| [u.id, u.posts.count] } }
+    let(:result) { users.map { |u| { id: nil, user_id: u.id, count: u.posts.count } } }
 
     it 'does not contains user without posts' do
       expect(Post.most_posting).to_not include [user.id, user.posts.count]
@@ -23,11 +23,11 @@ RSpec.describe Post, type: :model do
     end
 
     it 'return most posting user' do
-      expect(Post.most_posting).to eq result.reverse
+      expect(Post.most_posting.to_json).to eq result.reverse.to_json
     end
 
     it "return most posting user's post count" do
-      expect(Post.most_posting).to eq result.reverse
+      expect(Post.most_posting.to_json).to eq result.reverse.to_json
     end
   end
 end

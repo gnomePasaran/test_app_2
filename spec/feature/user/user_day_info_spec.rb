@@ -45,7 +45,7 @@ feature 'To see Top-5 one day info', %q{
     scenario 'without week ago liked posts and posts itself' do
       expect(page).to_not have_content week_ago_posted_user.email
       expect(page).to_not have_content week_ago_post.text
-      expect(page).to_not have_content week_ago_post.likes.count
+      expect(page).to_not have_content "Likes: week_ago_post.likes.count"
     end
   end
 
