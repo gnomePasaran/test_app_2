@@ -1,0 +1,68 @@
+.container-fluid
+  .panel-heading
+
+    .col-md-12.text-center
+      = link_to t('.current_day'), day_info_path, class: 'refresh-link btn btn-primary'
+      = link_to t('.week'), week_info_path, class: 'refresh-link btn btn-default'
+      = link_to t('.all_time'), root_path, class: 'refresh-link btn btn-success'
+
+  .col-md-6
+    .panel-heading
+      h4 = t('.top_users')
+
+    .panel-body
+      - if @top_posts.any?
+
+        table.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th = User.human_attribute_name('email')
+              th = User.human_attribute_name('posts')
+
+          tbody
+            - @top_posts.each do |element|
+              tr
+                td = element[0].email
+                td = element[1]
+
+  .col-md-6
+    .panel-heading
+      h4 = t('.top_liked')
+
+    .panel-body
+      - if @top_likes.any?
+
+        table.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th = User.human_attribute_name('email')
+              th = Post.human_attribute_name('text')
+              th = User.human_attribute_name('likes')
+
+          tbody
+            - @top_likes.each do |element|
+              tr
+                td = element[1].email
+                td = element[0].text
+                td
+                  | Likes:
+                  = element[2]
+
+  .col-md-12
+    .panel-heading
+      h4 = t('.top_average')
+
+    .panel-body
+      - if @top_average.any?
+
+        table.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th = User.human_attribute_name('email')
+              th = User.human_attribute_name('average')
+
+          tbody
+            - @top_average.each do |user|
+              tr
+                td = user[0].email
+                td = user[1]

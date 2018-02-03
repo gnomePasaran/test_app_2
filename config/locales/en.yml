@@ -1,4 +1,8 @@
 en:
+  layouts:
+    application:
+      title: HttpLab test app.
+
   users:
     index:
       current_day: Current Day
