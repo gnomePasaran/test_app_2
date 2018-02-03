@@ -1,0 +1,143 @@
+# This is the configuration used to check the rubocop source code.
+
+require:
+  - rubocop/cop/internal_affairs
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 2.4
+
+Naming/PredicateName:
+  # Method define macros for dynamically generated method.
+  MethodDefinitionMacros:
+    - define_method
+    - define_singleton_method
+    - def_node_matcher
+    - def_node_search
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
+  Exclude:
+    - 'config/routes.rb'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/SpaceInsideStringInterpolation:
+  Exclude:
+    - 'app/models/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'db/**/*'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/api/v1/post_spec.rb'
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/*'
+
+Style/FormatStringToken:
+  # Because we parse a lot of source codes from strings. Percent arrays
+  # look like unannotated format string tokens to this cop.
+  Exclude:
+    - spec/**/*
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - public_class_methods
+      - initializer
+      - instance_methods
+      - protected_methods
+      - private_methods
+
+Layout/IndentHeredoc:
+  EnforcedStyle: powerpack
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/InterpolationCheck:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/UselessAccessModifier:
+  MethodCreatingMethods:
+    - 'def_matcher'
+    - 'def_node_matcher'
+
+Lint/BooleanSymbol:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'db/**/*'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*'
+
+Metrics/LineLength:
+  Max: 130
+  Exclude:
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/doorkeeper.rb'
+
+Performance/Caller:
+  Exclude:
+    - spec/rubocop/cop/performance/caller_spec.rb
+
+RSpec/PredicateMatcher:
+  EnforcedStyle: explicit
+  Exclude:
+    - 'spec/api/v1/post_spec.rb'
+
+RSpec/ScatteredLet:
+  Exclude:
+    - 'spec/models/*'
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/NestedGroups:
+  Max: 7
