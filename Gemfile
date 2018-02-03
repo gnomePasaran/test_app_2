@@ -69,6 +69,8 @@ gem 'responders'
 gem 'active_model_serializers'
 gem 'oj'
 gem 'oj_mimic_json'
+# Templating
+gem 'slim-rails'
 
 group :test do
   gem 'json_spec'
