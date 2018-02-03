@@ -1,7 +1,6 @@
 en:
   users:
     index:
-      date: Date
-      day: Day
+      current_day: Current Day
       week: Week
-      refresh: Refresh
+      all_time: All Time

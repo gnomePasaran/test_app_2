@@ -105,4 +105,3 @@ Doorkeeper.configure do
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
 end
-#client_id=e1162ec398f2c3e75ce37902ea1d3a50301a00ed7bc77e6e6abab78facd0dacb&client_secret=fc2901385c94c9a9f0cd84830d1f0c79b6b1821da99c54d08e3b62e78c87ddde&code=bb54d72cb4c2678763e58086ae9988e561de11acd589007d8ca349749a93a35e&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob

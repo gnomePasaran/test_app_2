@@ -7,6 +7,6 @@ FactoryBot.define do
     text
   end
   factory :invalid_post, class: Post do
-    text 'a' * 150
+    text { 'a' * 150 }
   end
 end

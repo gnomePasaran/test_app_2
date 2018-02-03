@@ -6,11 +6,15 @@ class User < ApplicationRecord
   has_many :posts
 
   def self.most_posting_users(from = nil, to = nil)
-    Post.most_posting(from, to).map { |post| [User.find(post[:user_id]), post[:count]] }
+    Post.most_posting(from, to).map do |post|
+      [User.find(post[:user_id]), post[:count]]
+    end
   end
 
   def self.most_liked_users(from = nil, to = nil)
-    Like.most_liked(from, to).map { |like| [post = Post.find(like[:post_id]), User.find(post.user_id), like[:count]] }
+    Like.most_liked(from, to).map do |like|
+      [post = Post.find(like[:post_id]), User.find(post.user_id), like[:count]]
+    end
   end
 
   def self.most_average_users(from = nil, to = nil)
@@ -21,15 +25,14 @@ class User < ApplicationRecord
     likes_count = 0
 
     posts = self.posts
-    posts = self.posts.where('created_at between ? and ?', from, to.to_date + 1.day) if from.present? && to.present?
+    posts = posts.where('created_at between ? and ?', from, to.to_date + 1.day) if from.present? && to.present?
     posts.map do |post|
       likes = post.likes
       likes = likes.where('created_at between ? and ?', from, to.to_date + 1.day) if from.present? && to.present?
       likes_count += likes.count
     end
 
-    result = likes_count.to_f / posts.count.to_f
-    result = 0 if posts.count == 0
+    result = posts.count != 0 ? likes_count.to_f / posts.count.to_f : 0
     result
   end
 end
